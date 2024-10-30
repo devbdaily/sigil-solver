@@ -4,13 +4,14 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/devbdaily/sigil-solver/pkg/solver"
 )
 
 func main() {
 	http.HandleFunc("/solve", solveHandler)
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(os.Args[1], nil))
 }
 
 func solveHandler(w http.ResponseWriter, req *http.Request) {
