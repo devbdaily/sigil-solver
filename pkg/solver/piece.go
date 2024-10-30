@@ -2,8 +2,8 @@ package solver
 
 // Location indicates the location of a block or piece.
 type Location struct {
-	X int
-	Y int
+	X int `json:"x"`
+	Y int `json:"y"`
 }
 
 // Piece represents a puzzle piece used to cover the board.

@@ -6,8 +6,8 @@ import (
 
 // Board represents the puzzle board's size.
 type Board struct {
-	Width  int
-	Height int
+	Width  int `json:"width"`
+	Height int `json:"height"`
 	Placed []Piece
 }
 
@@ -23,12 +23,11 @@ type solver struct {
 }
 
 // NewSolver creates a new Solver
-func NewSolver(board *Board, pieces []Piece) (Solver, error) {
-
+func NewSolver(board *Board, pieces []Piece) (Solver) {
 	return &solver{
 		board:  board,
 		pieces: pieces,
-	}, nil
+	}
 }
 
 func (s *solver) Solve() (result *Board, err error) {

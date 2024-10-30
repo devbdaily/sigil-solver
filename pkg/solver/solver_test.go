@@ -75,12 +75,7 @@ func TestSolve(t *testing.T) {
 		},
 	}
 
-	solver, err := NewSolver(&board, pieces)
-
-	if err != nil {
-		t.Error(err)
-		return
-	}
+	solver := NewSolver(&board, pieces)
 
 	want := Board{
 		Width:  4,
