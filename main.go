@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+	http.Handle("/", http.FileServer(http.Dir("./website/public")))
 	http.HandleFunc("/solve", solveHandler)
 	log.Fatal(http.ListenAndServe(os.Args[1], nil))
 }
@@ -58,7 +59,7 @@ func solveHandler(w http.ResponseWriter, req *http.Request) {
 
 // SolveParams are the parameters provided in the request for the API: POST "/solve"
 type SolveParams struct {
-	Board solver.Board
+	Board  solver.Board
 	Pieces []SimplePiece `json:"pieces"`
 }
 

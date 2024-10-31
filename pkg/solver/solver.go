@@ -23,7 +23,7 @@ type solver struct {
 }
 
 // NewSolver creates a new Solver
-func NewSolver(board *Board, pieces []Piece) (Solver) {
+func NewSolver(board *Board, pieces []Piece) Solver {
 	return &solver{
 		board:  board,
 		pieces: pieces,
