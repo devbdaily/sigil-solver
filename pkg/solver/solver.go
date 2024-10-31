@@ -60,6 +60,9 @@ func (s *solver) checkBlockCount() error {
 }
 
 func (b *Board) placePieces(pieces []Piece) (found bool, err error) {
+	if len(pieces) == 0 {
+		return
+	}
 	piece := pieces[0]
 	remaining := pieces[1:]
 
