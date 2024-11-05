@@ -1,0 +1,9 @@
+name: sigil-solver
+
+services:
+  backend:
+    build:
+      dockerfile: ./build/Dockerfile
+      context: ./..
+    ports:
+      - "$HTTP_PORT:80"

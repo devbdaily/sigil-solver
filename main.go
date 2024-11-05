@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	http.Handle("/", http.FileServer(http.Dir("./website/public")))
+	http.Handle("/", http.FileServer(http.Dir("/var/www/sigil-solver/public")))
 	http.HandleFunc("/solve", solveHandler)
 	log.Fatal(http.ListenAndServe(os.Args[1], nil))
 }
