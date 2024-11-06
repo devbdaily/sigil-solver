@@ -66,7 +66,7 @@ func (b *Board) placePieces(pieces []Piece) (found bool, err error) {
 	piece := pieces[0]
 	remaining := pieces[1:]
 
-	for i := 0; i < 4; i++ {
+	for i := 0; i < piece.GetUniqueRotations(); i++ {
 		for j := 0; j < b.Height; j++ {
 			for l := 0; l < b.Width; l++ {
 				piece.Reset()

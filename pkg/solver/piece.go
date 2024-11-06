@@ -58,3 +58,48 @@ func (piece *Piece) Rotate90CW() {
 func (piece *Piece) Reset() {
 	piece.blocks = append([]Location{}, piece.Definition...)
 }
+
+// Equals determines the equality of piece a to piece b. If they have the same
+// block structure then this returns true.
+func (piece *Piece) Equals(b *Piece) bool {
+	for _, ablock := range piece.Blocks() {
+		found := false
+		for _, bblock := range b.Blocks() {
+			if ablock.X == bblock.X && ablock.Y == bblock.Y {
+				found = true
+				break
+			}
+		}
+		if found == false {
+			return false
+		}
+	}
+
+	return true
+}
+
+// GetUniqueRotations determines the number of unique rotation results for the piece.
+func (piece *Piece) GetUniqueRotations() int {
+	rotations := []*Piece{}
+	for i := 0; i < 4; i++ {
+		match := false
+		for _, p := range rotations {
+			if piece.Equals(p) {
+				match = true
+				break
+			}
+		}
+
+		if !match {
+			new := &Piece{
+				Definition: piece.Definition,
+				blocks:     append([]Location{}, piece.blocks...),
+			}
+			rotations = append(rotations, new)
+		}
+
+		piece.Rotate90CW()
+	}
+
+	return len(rotations)
+}
